@@ -16,8 +16,8 @@ publico :- salon5.
 movimiento :- sensor_mov_salon1_s1, sensor_mov_salon1_s2.
 movimiento :- sensor_mov_salon2_s1, sensor_mov_salon2_s2.
 movimiento :- sensor_mov_salon3_s1, sensor_mov_salon3_s2.
-movimiento :- sensor_mov_salon4.
-movimiento :- sensor_mov_salon5.
+movimiento :- sensor_mov1_salon4, sensor_mov2_salon4.
+movimiento :- sensor_mov1_salon5, sensor_mov2_salon5.
 
 cerrado:- domingo.
 
