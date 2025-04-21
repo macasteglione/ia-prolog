@@ -32,14 +32,12 @@ padres(veronica, luis).
 hermana(X, Y) :-
     mujer(X),
     padres(P, X),
-    padres(P, Y),
-    X \= Y.
+    padres(P, Y).
 
 hermano(X, Y) :-
     varon(X),
     padres(P, X),
-    padres(P, Y),
-    X \= Y.
+    padres(P, Y).
 
 hijo(X, P) :-
     varon(X),
@@ -48,23 +46,3 @@ hijo(X, P) :-
 hija(X, P) :-
     mujer(X),
     padres(P, X).
-
-sobrino(X, Y) :-
-    varon(X),
-    padres(P, X),
-    (hermano(P, Y) ; hermana(P, Y)).
-
-sobrina(X, Y) :-
-    mujer(X),
-    padres(P, X),
-    (hermano(P, Y) ; hermana(P, Y)).
-
-cunado(X, Y) :-
-    varon(Y),
-    (hermano(X, P) ; hermana(X, P)),
-    esposos(P, Y).
-
-cunada(X, Y) :-
-    mujer(Y),
-    (hermano(X, P) ; hermana(X, P)),
-    esposos(P, Y).
