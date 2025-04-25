@@ -1,8 +1,12 @@
 prefijo([], _).
-prefijo([X|Xs], [X|Ys]) :- prefijo(Xs, Ys).
+prefijo([X|Ps], [X|Ls]) :- prefijo(Ps, Ls).
 
-posfijo(P, L) :- append(_, P, L).
+posfijo(S, S).
+posfijo(S, [_|T]) :- posfijo(S, T).
 
-infijo(I, L) :- append(_, S, L), append(I, _, S).
+infijo(I, L) :- sufijo(L, S), prefijo(I, S).
+
+sufijo(L, L).
+sufijo([_|T], S) :- sufijo(T, S).
 
 sublista(S, L) :- infijo(S, L).
