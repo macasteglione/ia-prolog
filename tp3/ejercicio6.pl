@@ -8,5 +8,14 @@ arco(e, f).
 arco(e, g).
 arco(g, salida).
 
-buscar(X, Y, [X, Y]) :- arco(X, Y).
-buscar(X, Y, [X|Camino]) :- arco(X, Z), buscar(Z, Y, Camino).
+buscar(Inicio, Meta, Camino) :- buscar_aux([[Inicio]], Meta, Camino).
+
+buscar_aux([[Meta|Resto]|_], Meta, Camino) :- reverse([Meta|Resto], Camino).
+
+buscar_aux([[NodoActual|RestoCamino]|OtrosCaminos], Meta, Camino) :-
+    findall(
+        [NuevoNodo, NodoActual|RestoCamino],
+        (arco(NodoActual, NuevoNodo), \+ member(NuevoNodo, [NodoActual|RestoCamino])),
+        NuevosCaminos
+    ), 
+    append(OtrosCaminos, NuevosCaminos, NuevaCola), buscar_aux(NuevaCola, Meta, Camino).
